@@ -1,15 +1,19 @@
 package com.aston.Lesson1;
 
+import java.util.Arrays;
+
 public class Test {
     public static void main(String args[]) {
 //        printThreeWords();
 //        checkSumSign();
 //        printColor();
 //        compareNumbers();
-//        System.out.println(compareSumm(5,1));
+//        System.out.println(compareSumm(5,5));
 //        checkPositive(800);
 //        System.out.println(checkNumber(-1));
-        printString ("test string", 3);
+//        printString("test string", 3);
+//        System.out.println("Високосный год? " + leapYear(2000) );
+        changedMassive();
 
     }
 
@@ -25,8 +29,7 @@ public class Test {
         int c = a + b;
         if (c >= 0) {
             System.out.println("Сумма положительная");
-        }
-         else {
+        } else {
             System.out.println("Сумма отрицательная");
         }
     }
@@ -57,44 +60,59 @@ public class Test {
 
     //  №5 task
     public static boolean compareSumm(int a, int b) {
-        if ((a + b) >=10 & (a + b) <= 20){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return ((a + b) >= 10 & (a + b) <= 20);
+//        {
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
 
-//    №6 task
-    public static void checkPositive (int a) {
+    //    №6 task
+    public static void checkPositive(int a) {
         if (a >= 0) {
             System.out.println("Число " + a + " положительное");
-        }
-        else {
+        } else {
             System.out.println("Число " + a + " отрицательное");
         }
     }
 
-//    №7 task
-    public static boolean checkNumber (int a) {
+    //    №7 task
+    public static boolean checkNumber(int a) {
         if (a < 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     //    №8 task
- public static void printString (String s, int a) {
-    while (a > 0) {
-        System.out.println(s);
-        a --;
+    public static void printString(String s, int a) {
+        while (a > 0) {
+            System.out.println(s);
+            a--;
         }
-       }
+    }
 
+
+    // №9 task
+    public static boolean leapYear(int a) {
+        return (((a % 4 == 0) & (a % 100 != 0)) | (a % 400 == 0));
+    }
+
+    // №10 task
+    public static void changedMassive() {
+        int[] arr = {1, 1, 0, 0, 1, 0, 1};
+        System.out.println("Исходный массив " + Arrays.toString(arr));
+        for (int i=0; i<arr.length; i++){
+        if (arr[i]==0) {
+            arr[i]=1;
+        }
+        else {
+            arr[i]=0;
+        }
+    }
+        System.out.println("Измененный массив " + Arrays.toString(arr));
+    }
 }
-
-
-
 
