@@ -9,7 +9,7 @@ package com.aston.Lesson_3;
  старше 40 лет.
  *
  */
-/
+
 public class Employee {
     private final String fullName;
     private final String position;
