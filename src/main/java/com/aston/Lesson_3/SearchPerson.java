@@ -8,5 +8,11 @@ public class SearchPerson {
         persons[2] = new Employee("Sergeev Serge", "BA", "serge@mail.com", "333333", 1800, 41 );
         persons[3] = new Employee("Alexandrov Alex", "PO", "alex@mail.com", "4444444", 2500, 55 );
         persons[4] = new Employee("Igorev Igor", "Team Lead", "igor@mail.com", "555555", 3500, 39 );
+        for (Employee person : persons) {
+            if (person.getAge() > 39) {
+                person.getInfo();
+            }
+        }
     }
 }
+
