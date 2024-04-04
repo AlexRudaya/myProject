@@ -2,6 +2,9 @@ package com.aston.Lesson_4;
 
 public class Cat extends Animals{
 
+    boolean hungryLevel=false;
+    int canEat;
+
     static int amountCats=0;
     public Cat(String name){
         super(name); /*почему без этого ошибка?????*/
