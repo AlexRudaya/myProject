@@ -22,9 +22,7 @@ public class Plate {
     }
 
     public int decreaseFood(int portion, int food){
-        int remainder;
-        remainder=portion-food;
-        return remainder;
+      return portion-food;
     }
 
 
