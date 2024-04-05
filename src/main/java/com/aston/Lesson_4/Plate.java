@@ -19,9 +19,19 @@ public class Plate {
        //System.out.println(currentAmount);
        System.out.println("There is "+ currentAmount + " amount of food in the plate");
        }
+
+
     }
 
-    public int decreaseFood(int portion, int food){
+    //variant just to add food by portions without achieving the full plate
+    public void addFoodVersion2(int currentAmount, int additionalFood, int max) {
+        while (currentAmount+additionalFood<=max){
+            currentAmount=currentAmount+additionalFood;}
+        System.out.println("There is "+ currentAmount + " amount of food in the plate");
+
+    }
+
+        public int decreaseFood(int portion, int food){
       return portion-food;
     }
 
