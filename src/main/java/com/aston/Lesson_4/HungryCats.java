@@ -23,42 +23,35 @@ package com.aston.Lesson_4;
 public class HungryCats {
     public static void main(String[] args) {
         Cat[] cat = new Cat[5];
-        cat[0] = new Cat("Murzik");
-        cat[1] = new Cat("Barsik");
-        cat[2] = new Cat("Tom");
-        cat[3] = new Cat("Simba");
-        cat[4] = new Cat("Leo");
-        cat[0].canEat = 5;
-        cat[1].canEat = 14;
-        cat[2].canEat = 20;
-        cat[3].canEat = 5;
-        cat[4].canEat = 10;
+        cat[0] = new Cat("Murzik", 5);
+        cat[1] = new Cat("Barsik", 15);
+        cat[2] = new Cat("Tom", 40);
+        cat[3] = new Cat("Simba", 15);
+        cat[4] = new Cat("Leo", 30);
+
 
         Plate plate = new Plate(50);
 
         for (int i = 0; i < cat.length; i++) {
-            if (plate.decreaseFood(plate.size, cat[i].canEat) >= 0) {
+            if (plate.decreaseFood(cat[i].getCanEat())) {
                 cat[i].hungryLevel = true;
 
-                plate.size = plate.decreaseFood(plate.size, cat[i].canEat);
-            } else {
-                plate.amount = plate.size;
-                break;
             }
+
         }
 
         for (Cat value : cat) {
             if (value.hungryLevel) {
-                System.out.println("Cat " + value.name + " had food");
+                System.out.println("Cat " + value.getName() + " had food");
             } else {
-                System.out.println("Cat " + value.name + " is still hungry");
+                System.out.println("Cat " + value.getName() + " is still hungry");
             }
         }
 
-        System.out.println("Currently " + plate.amount + " is left in the plate");
+        System.out.println("Currently " + plate.getAmount() + " is left in the plate");
 
         //You can add food if you want
-        plate.addFood(plate.amount, 13, 50);
+        plate.addFood(20);
     }
 
 }

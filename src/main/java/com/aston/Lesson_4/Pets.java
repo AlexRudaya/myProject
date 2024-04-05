@@ -12,12 +12,11 @@ package com.aston.Lesson_4;
  */
 public class Pets {
     public static void main(String[] args) {
-        //Animals animals = new Animals("Cat"); //- почему обязательно создавать, можно без них?
-        Cat cat1 = new Cat("Tom");
-        Cat cat2 = new Cat("Leo");
-        Dog dog1 = new Dog("Bobik");
-        Dog dog2 = new Dog("Sam");
-        Cat cat3 = new Cat("Simba");
+        Animals cat1 = new Cat("Tom");
+        Animals cat2 = new Cat("Leo");
+        Animals dog1 = new Dog("Bobik");
+        Animals dog2 = new Dog("Sam");
+        Animals cat3 = new Cat("Simba");
         cat1.run(200);
         cat1.run(100);
         cat2.run(150);

@@ -1,8 +1,8 @@
 package com.aston.Lesson_4;
 
-public class Animals {
-    String name;
-    static int amountAnimals = 0;
+public abstract class Animals {
+    private final String name;
+    private static int amountAnimals = 0;
 
     public Animals(String name) {
         this.name = name;
@@ -19,5 +19,9 @@ public class Animals {
 
     public static int getAmountAnimals() { //почему статик????
         return amountAnimals;
+    }
+
+    public String getName() {
+        return name;
     }
 }

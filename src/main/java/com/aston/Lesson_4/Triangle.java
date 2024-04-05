@@ -15,14 +15,10 @@ public class Triangle implements Colors, Calculations {
         System.out.println("Border color of triangle is " + borderColor);
     }
 
-    ;
-
     @Override
     public void setBodyColor(String bodyColor) {
         System.out.println("Body color of triangle is " + bodyColor);
     }
-
-    ;
 
     @Override
     public double calculateSquare() {
