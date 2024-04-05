@@ -15,10 +15,9 @@ public class Plate {
         ;
         if (currentAmount > max) {
             int extraFood = currentAmount - max;
-            System.out.println("Plate if full, there is " + extraFood + " extra food left");
+            System.out.println("You've added food. Plate if full, there is " + extraFood + " extra food left");
         } else {
-            //System.out.println(currentAmount);
-            System.out.println("There is " + currentAmount + " amount of food in the plate");
+            System.out.println("You've added food. There is " + currentAmount + " amount of food in the plate");
         }
 
 

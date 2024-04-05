@@ -8,7 +8,7 @@ public class Cat extends Animals {
     static int amountCats = 0;
 
     public Cat(String name) {
-        super(name); /*почему без этого ошибка?????*/
+        super(name);
         this.name = name;
         amountCats++;
     }
