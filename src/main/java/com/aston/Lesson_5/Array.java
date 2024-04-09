@@ -22,18 +22,15 @@ public class Array {
         String[][] c = {{"5", "33", "3", "5"}, {"5", "7", "3", "17"}, {"5", "7", "3", "17"}};
         String[][] d = {{"5", "33", "3", "5"}, {"5", "6", "6", "3"}, {"5", "7", "3", "17"}, {"5", "7", "3"}};
 
-
         try {
-            exceptionTest(b);
+            System.out.println("Sum of all cells= " + exceptionTest(c));
         } catch (MyArrayDataException | MyArraySizeException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
-
     }
-
-    public static void exceptionTest(String[][] arr) throws MyArraySizeException, MyArrayDataException {
-        double sum = 0;
+    public static int exceptionTest(String[][] arr) throws MyArraySizeException, MyArrayDataException {
+        int sum = 0;
         if (arr.length != 4) {
             throw new MyArraySizeException("Incorrect amount of strings");
         }
@@ -42,19 +39,16 @@ public class Array {
                 throw new MyArraySizeException("Incorrect amount of columns");
             }
 
-
             for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + " ");
                 try {
                     sum = sum + Integer.parseInt(arr[i][j]);
                 } catch (NumberFormatException e) {
                     throw new MyArrayDataException(i, j, arr[i][j]);
                 }
             }
-            System.out.println();
-        }
-        System.out.println("Sum of all cells= " + sum);
-    }
 
+        }
+        return sum;
+    }
 
 }
