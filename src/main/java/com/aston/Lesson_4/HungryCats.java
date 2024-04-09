@@ -32,12 +32,8 @@ public class HungryCats {
 
         Plate plate = new Plate(50);
 
-        for (int i = 0; i < cat.length; i++) {
-            if (plate.decreaseFood(cat[i].getCanEat())) {
-                cat[i].hungryLevel = true;
-
-            }
-
+        for (int i = 0; i < cat.length; i++){
+            cat[i].eat(plate);
         }
 
         for (Cat value : cat) {

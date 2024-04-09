@@ -38,4 +38,9 @@ public class Cat extends Animals {
     public int getCanEat() {
         return canEat;
     }
+
+    public boolean eat(Plate portion) {
+       hungryLevel=portion.decreaseFood(getCanEat());
+       return hungryLevel;
+    }
 }
