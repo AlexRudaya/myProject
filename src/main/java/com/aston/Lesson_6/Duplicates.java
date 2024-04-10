@@ -27,7 +27,7 @@ public class Duplicates {
         for (int i=0;i<arrayList.size();i++){
             int count=0;
             for (int j=0;j<arrayList.size();j++)
-                if (arrayList.get(i) == arrayList.get(j)) {
+                if (arrayList.get(i).equals(arrayList.get(j))) {
                     count = count + 1;
                 }
             if (count==1) {
