@@ -8,14 +8,16 @@ public class Records {
     public Records() {
         this.record = new HashMap<>();
     }
-    public void add(String name, String number){
-        if (record.get(name)==null){
+
+    public void add(String name, String number) {
+        if (record.get(name) == null) {
             record.put(name, new HashSet<>());
         }
         record.get(name).add(number);
 
     }
-    public Set<String> get(String name){
+
+    public Set<String> get(String name) {
         return record.get(name);
     }
 
