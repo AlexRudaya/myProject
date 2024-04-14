@@ -1,7 +1,5 @@
 package com.aston.testng;
 
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -10,7 +8,7 @@ public class FactorialTest {
     SoftAssert softAssert = new SoftAssert();
 
     @Test
-    public void possitiveNumbers() {
+    public void positiveNumbers() {
         Factorial positive = new Factorial();
         softAssert.assertEquals(120, positive.getFactorial(5));
         softAssert.assertEquals(1, positive.getFactorial(1));
@@ -19,7 +17,7 @@ public class FactorialTest {
         softAssert.assertAll();
     }
 
-    //  @Test(expectedExceptions = IllegalArgumentException.class)
+
     @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Number can't be negative")
     public void negativeNumber() {
         Factorial negative = new Factorial();
