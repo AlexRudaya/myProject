@@ -2,13 +2,12 @@ package com.aston.Lesson_7;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FactorialTest {
     @Test
-    public void possitiveNumbers() {
+    public void positiveNumbers() {
         Factorial positive = new Factorial();
         assertAll(
                 () -> assertEquals(120, positive.getFactorial(5)),

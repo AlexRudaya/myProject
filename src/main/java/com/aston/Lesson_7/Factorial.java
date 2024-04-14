@@ -2,10 +2,6 @@ package com.aston.Lesson_7;
 
 public class Factorial {
 
-    //    private final int number;
-//    public Factorial(int number){
-//        this.number=number;
-//        }
     public int getFactorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Number can't be negative");
