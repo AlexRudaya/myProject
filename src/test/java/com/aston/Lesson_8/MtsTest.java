@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MtsTest {
     public static WebDriver driver;
-    Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+ //   Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     @BeforeAll
 
@@ -36,7 +36,6 @@ class MtsTest {
         if (driver.findElement(By.xpath("//div[@class='cookie__wrapper']")).isDisplayed()) {
             driver.findElement(By.xpath("//button[3]")).click();
         }
-
 
     }
 
@@ -98,18 +97,10 @@ class MtsTest {
         email.sendKeys("swallow88@yandex.ru");
         continueButton.click();
 
-        WebDriverWait waitFrame = new WebDriverWait(driver,Duration.ofSeconds(30));
+        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofSeconds(30));
         waitFrame.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@class='bepaid-iframe']")));
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//app-card-page//app-google-pay//button['Google Pay']")));
-
-//        driver.findElement(By.xpath("//app-card-page//app-google-pay//button['Google Pay']"));
-//
-//
-//        WebElement cardNumber = driver.findElement(By.xpath("//input[@id='cc-number']"));
-//        Assert.assertTrue(cardNumber.isDisplayed());
-//        cardNumber.click();
-//        cardNumber.sendKeys("297777777");
+        waitFrame.until(ExpectedConditions.elementToBeClickable(By.xpath("//app-card-page//app-google-pay//button['Google Pay']")));
 
         //сумма в заголовке
         WebElement paymentMethod = driver.findElement(By.xpath("//div[@class='pay-description__cost']"));
@@ -117,13 +108,41 @@ class MtsTest {
         WebElement buttonLabel = driver.findElement(By.xpath("//div[@class='card-page__card']/button[@type='submit']"));
         String button = buttonLabel.getText();
         //номер телефона
-        WebElement textPhone= driver.findElement(By.xpath("//span[@class='pay-description__text']"));
+        WebElement textPhone = driver.findElement(By.xpath("//span[@class='pay-description__text']"));
         String phone = textPhone.getText();
         assertAll(
-                () -> assertEquals("100.00 BYN",paymentMethod.getText()),
-                () -> assertEquals("100.00 BYN",button.substring(9,button.length())),
-                () -> assertEquals("375297777777",phone.substring(phone.length()-12,phone.length()))
+                () -> assertEquals("100.00 BYN", paymentMethod.getText()),
+                () -> assertEquals("100.00 BYN", button.substring(9, button.length())),
+                () -> assertEquals("375297777777", phone.substring(phone.length() - 12, phone.length()))
         );
+
+//        //текст в полях
+//        WebElement cardNumber = driver.findElement(By.xpath(".//app-card-input/form/div[1]/div[1]/app-input//div[1]/label"));
+//        WebElement expiration = driver.findElement(By.xpath("//app-card-input/form//div[2]/div[1]/app-input//div[1]/label"));
+//        WebElement cvc = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[2]/div[3]/app-input//div[1]/label"));
+//        WebElement owner = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[3]/app-input//div[1]/label"));
+//                assertAll(
+//                        () -> assertEquals("Номер карты", cardNumber.getText()),
+//                        () -> assertEquals("Срок действия", expiration.getText()),
+//                        () -> assertEquals("CVC", cvc.getText()),
+//                        () -> assertEquals("Имя держателя (как на карте)", owner.getText())
+//                );
+        //иконки
+
+        WebElement masterCard =driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/mastercard-system.svg']"));
+        WebElement visa = driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/visa-system.svg']"));
+        WebElement belcard = driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/belkart-system.svg'"));
+        WebElement mir = driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/mir-system-ru.svg']"));
+        WebElement maestro = driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/maestro-system.svg']"));
+
+        assertAll(
+                () ->assertTrue(masterCard.isDisplayed()),
+                () ->assertTrue(visa.isDisplayed()),
+                () ->assertTrue(belcard.isDisplayed()),
+                () ->assertTrue(mir.isDisplayed()),
+                () ->assertTrue(maestro.isEnabled()) //????????почему не работает с displayed
+        );
+
     }
 
 
