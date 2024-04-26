@@ -26,6 +26,7 @@ public class TestSetup {
 
     }
 
+
     @BeforeAll
     public void setUp() {
         setDriver();

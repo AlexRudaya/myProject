@@ -6,24 +6,38 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MtsPage {
     WebDriver driver;
-    @FindBy(xpath="//div[@class ='pay__wrapper' ]/h2")
+    @FindBy(xpath = "//div[@class ='pay__wrapper' ]/h2")
     WebElement cookiePopUp;
-    @FindBy(xpath="//button[3]")
+    @FindBy(xpath = "//button[3]")
     WebElement cookieButton;
-    @FindBy(xpath="//div[@class ='pay__wrapper' ]/h2")
+    @FindBy(xpath = "//div[@class ='pay__wrapper' ]/h2")
     WebElement sectionName;
 
-    @FindBy(xpath="//div[@class='pay__partners']//ul/li/img")
+    @FindBy(xpath = "//div[@class='pay__partners']//ul/li/img")
     List<WebElement> listOfIcons;
 
 
-    public void checkPopUp(){
+
+
+    @FindBy(xpath = "//input[@class='phone']")
+    WebElement phoneNumber;
+    @FindBy(xpath = "//form[1]/button['Продолжить']")
+    WebElement continueButton;
+    @FindBy(xpath = "//input[@class='total_rub']")
+    WebElement rub;
+    @FindBy(xpath = "//input[@class='email']")
+    WebElement email;
+
+    String phoneNumberValue = "297777777";
+    String rubValue = "100.78";
+    String emailValue = "email@email.com";
+
+    public void checkPopUp() {
         if (cookiePopUp.isDisplayed()) {
             System.out.println("inside if");
             cookieButton.click();
@@ -32,26 +46,44 @@ public class MtsPage {
         }
 
     }
+
     public void init(final WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-      public MtsPage(WebDriver driver) {
+
+    public MtsPage(WebDriver driver) {
         this.driver = driver;
         init(driver);
     }
 
 
-    public String getSectionText(){
+    public String getSectionText() {
         return sectionName.getText();
     }
 
-    public ArrayList<String> checkPaymentIcon (){
-        ArrayList<String> array= new ArrayList<>();
-        for (int i = 0; i < listOfIcons.size(); i++) {
-            array.set(i, listOfIcons.get(i).getAttribute("alt"));
-            System.out.println(array.get(i));
-        }
-        return array;
+
+    public String checkPaymentIcon(int i) {
+        return listOfIcons.get(i).getAttribute("alt");
+    }
+
+    public void phoneFields() {
+        phoneNumber.click();
+        phoneNumber.sendKeys(phoneNumberValue);
+        rub.click();
+        rub.sendKeys(rubValue);
+        email.click();
+        email.sendKeys(emailValue);
+        continueButton.click();
+    }
+
+
+    public double getRubValue() {
+        double rubCheck = Double.parseDouble(rubValue);
+        return rubCheck;
+    }
+
+    public String getPhoneNumberValue() {
+        return phoneNumberValue;
     }
 
 }

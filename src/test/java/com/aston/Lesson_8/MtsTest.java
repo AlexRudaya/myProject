@@ -116,17 +116,18 @@ class MtsTest {
                 () -> assertEquals("375297777777", phone.substring(phone.length() - 12, phone.length()))
         );
 
-//        //текст в полях
-//        WebElement cardNumber = driver.findElement(By.xpath(".//app-card-input/form/div[1]/div[1]/app-input//div[1]/label"));
-//        WebElement expiration = driver.findElement(By.xpath("//app-card-input/form//div[2]/div[1]/app-input//div[1]/label"));
-//        WebElement cvc = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[2]/div[3]/app-input//div[1]/label"));
-//        WebElement owner = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[3]/app-input//div[1]/label"));
-//                assertAll(
-//                        () -> assertEquals("Номер карты", cardNumber.getText()),
-//                        () -> assertEquals("Срок действия", expiration.getText()),
-//                        () -> assertEquals("CVC", cvc.getText()),
-//                        () -> assertEquals("Имя держателя (как на карте)", owner.getText())
-//                );
+        //текст в полях
+        WebElement cardNumber = driver.findElement(By.xpath(".//app-card-input/form/div[1]/div[1]/app-input//div[1]/label"));
+        WebElement expiration = driver.findElement(By.xpath("//app-card-input/form//div[2]/div[1]/app-input//div[1]/label"));
+        WebElement cvc = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[2]/div[3]/app-input//div[1]/label"));
+        WebElement owner = driver.findElement(By.xpath("//app-card-input/form/div[1]/div[3]/app-input//div[1]/label"));
+                assertAll(
+                        () -> assertEquals("Номер карты", cardNumber.getText()),
+                        () -> assertEquals("Срок действия", expiration.getText()),
+                        () -> assertEquals("CVC", cvc.getText()),
+                        () -> assertEquals("Имя держателя (как на карте)", owner.getText())
+
+                );
         //иконки
 
         WebElement masterCard =driver.findElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/mastercard-system.svg']"));
