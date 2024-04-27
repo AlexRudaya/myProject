@@ -1,3 +1,6 @@
+/** Проверить название указанного блока;
+ 2. Проверить наличие логотипов платёжных систем;
+ 3. Проверить работу ссылки «Подробнее о сервисе»;*/
 package tests;
 
 import basepage.MtsPage;
@@ -17,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.Duration;
 import java.util.List;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
 public class MtsPageTest extends TestSetup {
     private  WebDriver driver;

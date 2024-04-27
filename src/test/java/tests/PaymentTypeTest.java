@@ -1,9 +1,13 @@
+/**Проверить надписи в незаполненных полях каждого варианта
+ оплаты услуг: услуги связи, домашний интернет, рассрочка,
+ задолженность; */
 package tests;
 
 import basepage.MtsPage;
 import basepage.PaymentTypeDropDown;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +17,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PaymentTypeTest extends TestSetup {
 
     private WebDriver driver;
@@ -38,7 +42,7 @@ public class PaymentTypeTest extends TestSetup {
         WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(30000));
         waitFrame.until(ExpectedConditions.visibilityOfAllElements(paymentType.getInetNumber()));
 //  не работает,если раскомментить
-//         paymentType.getInetNumber().click();
+//      paymentType.getInetNumber().click();
         paymentType.getInetNumber().sendKeys("3333333");
         assertAll(
                 () -> assertTrue(paymentType.getInetNumber().isDisplayed()),
