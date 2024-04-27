@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MtsPage {
     WebDriver driver;
     @FindBy(xpath = "//div[@class ='pay__wrapper' ]/h2")
@@ -21,9 +21,6 @@ public class MtsPage {
     @FindBy(xpath = "//div[@class='pay__partners']//ul/li/img")
     List<WebElement> listOfIcons;
 
-
-
-
     @FindBy(xpath = "//input[@class='phone']")
     WebElement phoneNumber;
     @FindBy(xpath = "//form[1]/button['Продолжить']")
@@ -34,15 +31,12 @@ public class MtsPage {
     WebElement email;
 
     String phoneNumberValue = "297777777";
-    String rubValue = "100.78";
+    String rubValue = "20";
     String emailValue = "email@email.com";
 
     public void checkPopUp() {
         if (cookiePopUp.isDisplayed()) {
-            System.out.println("inside if");
-            cookieButton.click();
-        } else {
-            System.out.println("ignored");
+             cookieButton.click();
         }
 
     }

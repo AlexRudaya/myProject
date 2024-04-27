@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Frame {
     WebDriver driver;
     @FindBy(xpath = "//iframe[@class='bepaid-iframe']")
@@ -66,6 +66,9 @@ public class Frame {
         return frameLink;
     }
 
+    public WebElement getGoogleButton(){
+        return googleButton;
+    }
     public double paymentMethodLabel() {
         String paymentLabel = paymentMethod.getText();
         double paymentByn = Double.parseDouble(paymentLabel.substring(0, paymentLabel.length() - 4));

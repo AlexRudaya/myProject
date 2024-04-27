@@ -35,7 +35,7 @@ public class FrameTest extends TestSetup {
         mtsPage.phoneFields();
         WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofSeconds(30));
         waitFrame.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framePopUp.loadFrameLink()));
-        waitFrame.until(ExpectedConditions.elementToBeClickable(By.xpath("//app-card-page//app-google-pay//button['Google Pay']")));
+        waitFrame.until(ExpectedConditions.elementToBeClickable(framePopUp.getGoogleButton()));
 
     }
 

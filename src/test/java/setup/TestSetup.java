@@ -8,6 +8,9 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestSetup {
     public static WebDriver driver;
@@ -30,7 +33,6 @@ public class TestSetup {
     @BeforeAll
     public void setUp() {
         setDriver();
-        //если появился поп ап с куки
             }
 
     @AfterAll
