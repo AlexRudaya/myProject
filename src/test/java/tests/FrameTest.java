@@ -11,7 +11,6 @@ import basepage.Frame;
 import basepage.MtsPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,20 +26,15 @@ public class FrameTest extends TestSetup {
     private Frame framePopUp;
     private MtsPage mtsPage;
 
-
+    WebDriverWait waitFrame;
     @BeforeAll
     public void setUpDriver() {
         driver = getDriver();
         framePopUp = new Frame(driver);
         mtsPage = new MtsPage(driver);
         mtsPage.checkPopUp();
-
-    }
-
-    @Test
-    public void inputValuesAndContinue() {
         mtsPage.phoneFields();
-        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofSeconds(30));
+        waitFrame = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitFrame.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framePopUp.loadFrameLink()));
         waitFrame.until(ExpectedConditions.elementToBeClickable(framePopUp.getGoogleButton()));
 

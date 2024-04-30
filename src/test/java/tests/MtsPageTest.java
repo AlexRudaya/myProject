@@ -8,19 +8,15 @@ import basepage.ServiceInfoPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import setup.TestSetup;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
-import java.util.List;
 
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MtsPageTest extends TestSetup {
     private  WebDriver driver;

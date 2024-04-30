@@ -13,7 +13,7 @@ public class PaymentTypeDropDown {
     WebElement homeInet;
     @FindBy(id = "internet-phone")
     WebElement inetNumber;
-    @FindBy(id = "internet-sum")
+    @FindBy(xpath = "//input[@id='internet-sum']")
     WebElement inetSum;
     @FindBy(id = "internet-email")
     WebElement inetEmail;
@@ -54,12 +54,14 @@ public class PaymentTypeDropDown {
         init(driver);
     }
 
-    public WebElement getDropDownPay() {
-        return dropDownPay;
+    public void clickDropDownPay() {
+        dropDownPay.click();
+
     }
 
-    public WebElement getHomeInet() {
-        return homeInet;
+    public void clickHomeInet() {
+        homeInet.click();
+
     }
 
     public WebElement getInetNumber() {

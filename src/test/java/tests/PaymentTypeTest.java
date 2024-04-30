@@ -7,23 +7,20 @@ import basepage.MtsPage;
 import basepage.PaymentTypeDropDown;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import setup.TestSetup;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PaymentTypeTest extends TestSetup {
 
     private WebDriver driver;
     private PaymentTypeDropDown paymentType;
     private MtsPage mtsPage;
-    WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(3000));
+    WebDriverWait wait;
 
 
     @BeforeAll
@@ -32,18 +29,15 @@ public class PaymentTypeTest extends TestSetup {
         mtsPage = new MtsPage(driver);
         mtsPage.checkPopUp();
         paymentType = new PaymentTypeDropDown(driver);
-
+        wait = new WebDriverWait(driver, Duration.ofMillis(7000));
     }
 
     @Test
-    public void homeInternet() {
-        paymentType.getDropDownPay().click();
-        paymentType.getHomeInet().click();
-        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(30000));
-        waitFrame.until(ExpectedConditions.visibilityOfAllElements(paymentType.getInetNumber()));
-//  не работает,если раскомментить
-//      paymentType.getInetNumber().click();
-        paymentType.getInetNumber().sendKeys("3333333");
+    public void homeInternet()  {
+        paymentType.clickDropDownPay();
+        paymentType.clickHomeInet();
+        wait.until(ExpectedConditions.visibilityOf(paymentType.getInetSum()));
+
         assertAll(
                 () -> assertTrue(paymentType.getInetNumber().isDisplayed()),
                 () -> assertTrue(paymentType.getInetSum().isDisplayed()),
@@ -56,13 +50,10 @@ public class PaymentTypeTest extends TestSetup {
 
     @Test
     public void installment() {
-        paymentType.getDropDownPay().click();
+        paymentType.clickDropDownPay();
         paymentType.getInstallment().click();
-        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(3000));
-        waitFrame.until(ExpectedConditions.visibilityOfAllElements(paymentType.getInstEmail()));
-        paymentType.getInstEmail().click();
-        paymentType.getInstEmail().sendKeys("111");
-        //Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfAllElements(paymentType.getInstEmail()));
+
         assertAll(
                 () -> assertTrue(paymentType.getInstScore().isDisplayed()),
                 () -> assertTrue(paymentType.getInstSum().isDisplayed()),
@@ -75,19 +66,13 @@ public class PaymentTypeTest extends TestSetup {
 
     @Test
     public void arrears() {
-        paymentType.getDropDownPay().click();
+        paymentType.clickDropDownPay();
         paymentType.getArrears().click();
-        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(3000));
-        waitFrame.until(ExpectedConditions.visibilityOfAllElements(paymentType.getArrEmail()));
-        paymentType.getArrSum().click();
-        paymentType.getArrEmail().sendKeys("111");
-        paymentType.getArrScore().sendKeys("111");
-        paymentType.getArrSum().sendKeys("111");
+        wait.until(ExpectedConditions.visibilityOfAllElements(paymentType.getArrEmail()));
         assertAll(
                 () -> assertTrue(paymentType.getArrScore().isDisplayed()),
                 () -> assertTrue(paymentType.getArrSum().isDisplayed()),
                 () -> assertTrue(paymentType.getArrEmail().isDisplayed()),
-                //  () -> assertTrue(paymentType.getInetEmail().isDisplayed()),
                 () -> assertEquals("Номер счета на 2073", paymentType.getArrScore().getAttribute("placeholder")),
                 () -> assertEquals("Сумма", paymentType.getArrSum().getAttribute("placeholder")),
                 () -> assertEquals("E-mail для отправки чека", paymentType.getArrEmail().getAttribute("placeholder"))
@@ -96,14 +81,10 @@ public class PaymentTypeTest extends TestSetup {
 
     @Test
     public void connections() {
-        paymentType.getDropDownPay().click();
+        paymentType.clickDropDownPay();
         paymentType.getConnections().click();
-        WebDriverWait waitFrame = new WebDriverWait(driver, Duration.ofMillis(3000));
-        waitFrame.until(ExpectedConditions.elementToBeClickable(paymentType.getConEmail()));
-        paymentType.getConEmail().click();
-        paymentType.getConEmail().sendKeys("111");
-        paymentType.getArrScore().sendKeys("111");
-        paymentType.getArrSum().sendKeys("111");
+        wait.until(ExpectedConditions.elementToBeClickable(paymentType.getConEmail()));
+
         assertAll(
                 () -> assertTrue(paymentType.getConPhone().isDisplayed()),
                 () -> assertTrue(paymentType.getConSum().isDisplayed()),

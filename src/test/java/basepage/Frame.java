@@ -1,12 +1,10 @@
 package basepage;
 
-import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Frame {
     WebDriver driver;
     @FindBy(xpath = "//iframe[@class='bepaid-iframe']")
