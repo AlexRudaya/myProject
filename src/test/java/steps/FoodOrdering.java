@@ -41,17 +41,18 @@ public class FoodOrdering extends TestSetup {
     @Then("Navigate to basket")
     public void navigate_to_basket() {
         basketPage.navigateToBasket();
-        basketPage.checkPresenceOfOrder();
+
     }
 
     @Then("Check the food is added")
     public void check_the_food_is_added() {
-        orderPage.navigateToOrderPage();
+        basketPage.checkPresenceOfOrder();
     }
 
 
     @And("Make an order")
     public void makeAnOrder()  {
+        orderPage.navigateToOrderPage();
         orderPage.populateMandatoryFields();
         orderPage.populateAddress();
         orderPage.populatePersonalInfo();
