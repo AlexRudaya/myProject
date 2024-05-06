@@ -7,18 +7,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import setup.TestSetup;
-
-import java.time.Duration;
 
 public class FoodOrdering extends TestSetup {
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private PetMainPage petPage;
     private BasketPage basketPage;
     private OrderPage orderPage;
@@ -29,7 +23,6 @@ public class FoodOrdering extends TestSetup {
         petPage = new PetMainPage(driver);
         basketPage = new BasketPage(driver);
         orderPage = new OrderPage(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(100000));
 
     }
 
@@ -58,18 +51,12 @@ public class FoodOrdering extends TestSetup {
 
 
     @And("Make an order")
-    public void makeAnOrder() throws InterruptedException {
+    public void makeAnOrder()  {
         orderPage.populateMandatoryFields();
         orderPage.populateAddress();
         orderPage.populatePersonalInfo();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("arguments[0].scrollIntoView();", orderPage.getPaymentType());
-//НЕ РАБОТАЕТ БЕЗ ОСТАНОВКИ ПОТОКА ПОЧЕМУ-ТО
-        js.executeScript("window.scrollBy(0,1000)");
-        Thread.sleep(1000);
-        wait.until(ExpectedConditions.visibilityOfAllElements(orderPage.getPaymentType()));
         orderPage.choosePaymentType();
-        //orderPage.finalizeOrder();
-        Thread.sleep(1000);
+        orderPage.finalizeOrder();
+        orderPage.getOrderId();
     }
 }

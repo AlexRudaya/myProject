@@ -1,8 +1,4 @@
-Feature: HomePage Feature
-#  Scenario:
-#    Given I navigate to the home page
-#    When Navigate forgot password link
-#    Then I should see forgot password page
+Feature: PetFoodOrdering Feature
 
 Scenario:
   Given I navigate to pet site

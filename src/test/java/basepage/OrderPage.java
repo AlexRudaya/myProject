@@ -2,6 +2,7 @@ package basepage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +17,7 @@ public class OrderPage {
     String personName = "Александра";
     String phoneNum = "297777777";
     String emailValue = "email@email.com";
+    String urlOfOrder;
 
     @FindBy(xpath = ".//a[@city-id='2406']")
     WebElement selectCity;
@@ -47,9 +49,12 @@ public class OrderPage {
     WebElement email;
     @FindBy(xpath = "//a[@class='cart-order__continue']")
     WebElement continueOrderButton;
-    private BasketPage basketP;
+    @FindBy(xpath = "//h1[text()='Спасибо, ваш заказ принят']")
+    WebElement sucsessOrderLabel;
+    private final BasketPage basketP;
     WebDriver driver;
     WebDriverWait wait;
+    Actions action;
 
     public void init(final WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -61,8 +66,8 @@ public class OrderPage {
         this.driver = driver;
         init(driver);
         basketP = new BasketPage(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10000));
+        action = new Actions(driver);
 
     }
 
@@ -76,11 +81,6 @@ public class OrderPage {
         wait.until(ExpectedConditions.visibilityOfAllElements(labelForOrder));
     }
 
-//    public void selectDateOfDelivery() throws InterruptedException {
-//        System.out.println(currentDate.getAttribute("value"));
-//        currentDate.sendKeys("04.06.2024");
-//        Thread.sleep(1000);
-//    }
 
     public void populateAddress() {
         street.sendKeys(streetName);
@@ -89,12 +89,11 @@ public class OrderPage {
 
     }
 
-    public WebElement getPaymentType() {
-        return paymentType;
-    }
 
     public void choosePaymentType() {
+        action.scrollToElement(paymentType).perform();
         paymentType.click();
+
     }
 
     public void populateMandatoryFields()  {
@@ -112,5 +111,13 @@ public class OrderPage {
 
     public void finalizeOrder() {
         continueOrderButton.click();
+        wait.until(ExpectedConditions.visibilityOf(sucsessOrderLabel));
+
+    }
+
+    public void getOrderId(){
+        urlOfOrder=driver.getCurrentUrl();
+        String[] urlSplit = urlOfOrder.split("=");
+        System.out.println("Your order id is "+ urlSplit[1]);
     }
 }
