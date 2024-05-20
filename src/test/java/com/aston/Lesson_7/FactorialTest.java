@@ -1,10 +1,12 @@
 package com.aston.Lesson_7;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import com.epam.reportportal.junit5.ReportPortalExtension;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith({ReportPortalExtension.class})
 class FactorialTest {
     @Test
     public void positiveNumbers() {
